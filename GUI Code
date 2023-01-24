@@ -1,0 +1,55 @@
+import tkinter as tk
+import webview as web
+
+window = tk.Tk()
+def create():
+  welcome = tk.Label( #Creates the starting label, to welcome    in new people
+    text ="Welcome to the Library of Pythonia!\n" + "-Created by- \n" + "Aidan Fetter and Jacob Zukas", #the starting message
+    fg ="white", 
+    bg = "black",
+    height = 10,
+    font = ('Times', 20)
+  ) 
+  
+  welcome.pack(fill=tk.BOTH, expand = True) #runs the welcome message and adds a fill to the message
+
+  window.mainloop #this command "listens" for events (such as mouse clicks or key pressed) and blocks out any excess code until the window is closed)
+  
+  begin = tk.Button( #creates a button to delete everything and open the library
+    text = "Begin",
+    fg = "black",
+    bg = "white",
+    height = 8,
+    font = ('Times', 14),
+  )
+
+  def clickBegin(i): #Destroys the menu and opens the library
+    print("The button was pressed!")
+    welcome.destroy()
+    begin.destroy()
+    sourceCode.destroy()
+    #openLibrary()
+  
+  begin.bind("<Button-1>", clickBegin) #binds the left mouse to activates the button and its funtions when clicked
+  
+  sourceCode = tk.Button( #creates a button to show source code (opens a link)
+    text = "Source Code",
+    fg = "black",
+    bg = "white",
+    height = 8,
+    font = ('Times', 14),
+  )
+
+  def clickSourceCode(event):
+    webview.create_window('GitHub', )
+    print("Hello Worlds!!")
+
+  sourceCode.bind("<Button-1>", clickSourceCode)
+  
+  begin.pack(fill = tk.BOTH, side = tk.LEFT, expand = True) #this ensures that the buttons will expand based on the size of the window and will not mess up in size
+  sourceCode.pack(fill = tk.BOTH, side = tk.RIGHT, expand = True)
+
+def main():
+  create()
+  
+main()
